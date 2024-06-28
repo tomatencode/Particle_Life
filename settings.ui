@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Settings_Widget</class>
+ <widget class="QWidget" name="Settings_Widget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>301</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">    /* Set a light grey background color and some transparency for the main widget */
+    QWidget {
+        background: rgba(105, 105, 105, 80); /* No background */
+        border-radius: 10px; /* Rounded corners */
+    }
+
+    /* Set a darker grey for buttons and make them a bit more transparent */
+    QPushButton {
+        background-color: rgba(105, 105, 105, 200); /* Dim grey with more transparency */
+        color: white; /* White text */
+        border-radius: 10px; /* Rounded corners */
+        border: 1px solid rgba(255, 255, 255, 100); /* Light white border with some transparency */
+        padding: 5px; /* Padding for better look */
+    }
+
+    /* Change the appearance when buttons are pressed */
+    QPushButton:pressed {
+        background-color: rgba(70, 70, 70, 200); /* Darker grey when pressed */
+    }
+
+    /* Customize line edits */
+    QLineEdit {
+        background-color: rgba(169, 169, 169, 180); /* Light grey with some transparency */
+        border: 1px solid rgba(255, 255, 255, 100); /* Light white border */
+        border-radius: 10px; /* Rounded corners */
+        padding: 5px; /* Padding for better look */
+        color: black; /* Black text */
+    }
+
+    /* Customize text edits */
+    QTextEdit {
+        background-color: rgba(169, 169, 169, 180); /* Light grey with some transparency */
+        border: 1px solid rgba(255, 255, 255, 100); /* Light white border */
+        border-radius: 10px; /* Rounded corners */
+        padding: 5px; /* Padding for better look */
+        color: black; /* Black text */
+    }
+
+    /* Customize labels to remove any background or border */
+    QLabel {
+        background: transparent; /* No background */
+        border: none; /* No border */
+        color: White; /* Black text */
+    }
+
+    /* Customize sliders */
+    QSlider {
+        background: transparent; /* No background */
+        border: none; /* No border */
+    }
+
+    QSlider::groove:horizontal {
+        background: rgba(105, 105, 105, 200); /* Grey groove */
+        border-radius: 5px; /* Rounded corners for groove */
+        height: 6px; /* Height of groove */
+        border-radius: 2px; /* Rounded corners for handle */
+    }
+
+    QSlider::handle:horizontal {
+        background: rgba(255, 255, 255, 200); /* White handle */
+        border: 1px solid rgba(105, 105, 105, 200); /* Grey border */
+        width: 14px; /* Width of handle */
+        height: 14px; /* Height of handle */
+        margin: -5px 0; /* Center the handle */
+        border-radius: 7px; /* Rounded corners for handle */
+    }
+
+    QSlider::groove:vertical {
+        background: rgba(105, 105, 105, 200); /* Grey groove */
+        border-radius: 5px; /* Rounded corners for groove */
+        width: 6px; /* Width of groove */
+        border-radius: 2px; /* Rounded corners for handle */
+    }
+
+    QSlider::handle:vertical {
+        background: rgba(255, 255, 255, 200); /* White handle */
+        border: 1px solid rgba(105, 105, 105, 200); /* Grey border */
+        width: 14px; /* Width of handle */
+        height: 14px; /* Height of handle */
+        margin: 0 -5px; /* Center the handle */
+        border-radius: 7px; /* Rounded corners for handle */
+    }
+
+    /* Customize radio buttons */
+    QRadioButton {
+        background: transparent; /* No background */
+        color: black; /* Black text */
+    }
+
+    /* Customize the indicator (circle) of the radio button */
+    QRadioButton::indicator {
+        width: 10px;
+        height: 10px;
+        border-radius: 5px; /* Fully rounded */
+        background: rgba(255, 255, 255, 200); /* White background */
+        border: 2px solid rgba(105, 105, 105, 200); /* Grey border */
+    }
+
+    /* Customize the indicator when the radio button is checked */
+    QRadioButton::indicator:checked {
+        background-color: rgba(105, 105, 105, 200); /* Dim grey when checked */
+        border: 2px solid rgba(70, 70, 70, 200); /* Darker grey border when checked */
+    }
+
+    QTabWidget::pane {
+        border-top: 1px solid rgba(180, 180, 180, 180);; /* Line separating the tab bar and content */
+        top: 1px; /* Adjusts the position to align with the tab bar */
+        border-radius: 5px;
+    }
+
+    QTabBar::tab {
+        background: rgba(128, 128, 128, 180); /* Semi-transparent grey */
+        color: white;
+        padding: 5px; /* Reduced padding */
+        margin: 1px; /* Reduced margin */
+        border: none; /* Removed border */
+        border-radius: 6px;
+    }
+
+    QTabBar::tab:selected {
+        background: rgba(160, 160, 160, 200); /* Slightly less transparent grey for selected tab */
+        color: white;
+    }
+
+    QTabBar::tab:hover {
+        background: rgba(128, 128, 128, 200); /* Slightly less transparent grey for hover */
+        color: white;
+    }
+
+    QFrame#line_simulation {
+        background-color: rgba(128, 128, 128, 180); /* Semi-transparent grey */
+        border: none;
+        height: 2px; /* Adjust the thickness of the line */
+        border-radius: 2px; /* Rounded corners */
+    }
+
+    QFrame#line_particles {
+        background-color: rgba(128, 128, 128, 180); /* Semi-transparent grey */
+        border: none;
+        height: 2px; /* Adjust the thickness of the line */
+        border-radius: 2px; /* Rounded corners */
+    }</string>
+  </property>
+  <widget class="QTabWidget" name="tabWidget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>300</width>
+     <height>500</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="tabPosition">
+    <enum>QTabWidget::North</enum>
+   </property>
+   <property name="tabShape">
+    <enum>QTabWidget::Rounded</enum>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="tab">
+    <attribute name="title">
+     <string>Simulation</string>
+    </attribute>
+    <widget class="QLabel" name="tps_label">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>91</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>tps: 0</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="time_running">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>10</y>
+       <width>181</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Time Running: 0 sec</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="dt_label">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>101</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>dt: 0.080</string>
+     </property>
+    </widget>
+    <widget class="QSlider" name="dt_slider">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>70</y>
+       <width>160</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="minimum">
+      <number>1</number>
+     </property>
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="Line" name="line_simulation">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>35</y>
+       <width>271</width>
+       <height>1</height>
+      </rect>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>2</height>
+      </size>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="friction_label">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>90</y>
+       <width>101</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Friction: 0.980</string>
+     </property>
+    </widget>
+    <widget class="QSlider" name="friction_slider">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>110</y>
+       <width>160</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="minimum">
+      <number>1</number>
+     </property>
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="play_pause_Button">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>50</y>
+       <width>31</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="settings_resurces.qrc">
+       <normaloff>:/icons/pause_icon.png</normaloff>:/icons/pause_icon.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="default">
+      <bool>false</bool>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="screenshot_Button">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>50</y>
+       <width>31</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="settings_resurces.qrc">
+       <normaloff>:/icons/screenshot_icon.png</normaloff>:/icons/screenshot_icon.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>19</width>
+       <height>19</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>false</bool>
+     </property>
+     <property name="default">
+      <bool>false</bool>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_2">
+    <attribute name="title">
+     <string>Particles</string>
+    </attribute>
+    <widget class="QPushButton" name="Reset_Button">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>71</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Respawn</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="num_particles_label">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>111</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Particles: 0</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="num_types_label">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>10</y>
+       <width>67</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Types: 0</string>
+     </property>
+    </widget>
+    <widget class="Line" name="line_particles">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>35</y>
+       <width>271</width>
+       <height>1</height>
+      </rect>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>2</height>
+      </size>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="force_range_label">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>90</y>
+       <width>121</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Force Range: 80</string>
+     </property>
+    </widget>
+    <widget class="QSlider" name="force_range_slider">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>110</y>
+       <width>160</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="minimum">
+      <number>1</number>
+     </property>
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="sable_dist_label">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>130</y>
+       <width>141</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Stable Distance: 0.3</string>
+     </property>
+    </widget>
+    <widget class="QSlider" name="stable_dist_slider">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>150</y>
+       <width>160</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="minimum">
+      <number>1</number>
+     </property>
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="force_table" name="force_tb" native="true">
+     <property name="geometry">
+      <rect>
+       <x>15</x>
+       <y>180</y>
+       <width>250</width>
+       <height>250</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_3">
+    <attribute name="title">
+     <string>interact</string>
+    </attribute>
+   </widget>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>force_table</class>
+   <extends>QWidget</extends>
+   <header>force_table.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="settings_resurces.qrc"/>
+ </resources>
+ <connections/>
+</ui>
